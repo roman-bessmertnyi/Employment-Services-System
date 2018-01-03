@@ -44,6 +44,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
       <Private>True</Private>
@@ -52,6 +60,7 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
@@ -157,17 +166,96 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\SampleDirection.cs" />
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
+    <Compile Include="business_stream.cs">
+      <DependentUpon>Employment-Services-Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="company.cs">
+      <DependentUpon>Employment-Services-Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="company_image.cs">
+      <DependentUpon>Employment-Services-Model.tt</DependentUpon>
+    </Compile>
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
+    <Compile Include="education_detail.cs">
+      <DependentUpon>Employment-Services-Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Employment-Services-Model.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Employment-Services-Model.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Employment-Services-Model.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Employment-Services-Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Employment-Services-Model.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Employment-Services-Model.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="experience_detail.cs">
+      <DependentUpon>Employment-Services-Model.tt</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="job_location.cs">
+      <DependentUpon>Employment-Services-Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="job_post.cs">
+      <DependentUpon>Employment-Services-Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="job_post_activity.cs">
+      <DependentUpon>Employment-Services-Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="job_post_skill_set.cs">
+      <DependentUpon>Employment-Services-Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="job_type.cs">
+      <DependentUpon>Employment-Services-Model.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="seeker_profile.cs">
+      <DependentUpon>Employment-Services-Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="seeker_skill_set.cs">
+      <DependentUpon>Employment-Services-Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="skill_set.cs">
+      <DependentUpon>Employment-Services-Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sysdiagrams.cs">
+      <DependentUpon>Employment-Services-Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="user_account.cs">
+      <DependentUpon>Employment-Services-Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="user_log.cs">
+      <DependentUpon>Employment-Services-Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="user_type.cs">
+      <DependentUpon>Employment-Services-Model.tt</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\HelpPage\HelpPage.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\gerb.gif" />
+    <Content Include="Content\title.gif" />
+    <Content Include="Content\title2.gif" />
+    <Content Include="Employment-Services-Model.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Employment-Services-Model.edmx</DependentUpon>
+      <LastGenOutput>Employment-Services-Model.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Employment-Services-Model.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Employment-Services-Model.edmx</DependentUpon>
+      <LastGenOutput>Employment-Services-Model.cs</LastGenOutput>
+    </Content>
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -192,6 +280,13 @@
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\CollectionModelDescription.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\ApiGroup.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\Api.cshtml" />
+    <EntityDeploy Include="Employment-Services-Model.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Employment-Services-Model.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Employment-Services-Model.edmx.diagram">
+      <DependentUpon>Employment-Services-Model.edmx</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -214,7 +309,9 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />

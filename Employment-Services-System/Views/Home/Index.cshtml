@@ -10,42 +10,85 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
 </head>
 <body>
-    <nav class="navbar navbar-expand-sm bg-success navbar-dark">
-        <ul class="navbar-nav">
-            <li class="nav-item active">
-                <a class="nav-link" href="#">Active</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Link</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Link</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link disabled" href="#">Disabled</a>
-            </li>
-        </ul>
-    </nav>
 
     <div class="row">
-        <div class="col-sm-2 btn-group btn-group-lg">
+        <div class="col-sm-3 btn-group btn-group-lg">
             <button type="button" class="btn btn-primary">
-                <img src="~/Content/Images/NET_lazy_header.png" alt="Фоновый рисунок" width="100%" />
+                <img src="~/Content/title.gif" alt="title" />
             </button>
         </div>
-        <div class="col-sm-6 btn-group btn-group-lg">
-            <button type="button" class="btn btn-primary">Головна</button>
-            <button type="button" class="btn btn-primary">Пошук роботи</button>
-            <button type="button" class="btn btn-primary">Створити резюме</button>
+        <div class="col-sm-5 btn-group btn-group-lg btn-block">
+            <button type="button" class="btn btn-primary"><h3>Головна</h3></button>
+            <button type="button" class="btn btn-primary"><h3>Пошук роботи</h3></button>
+            <button type="button" class="btn btn-primary"><h3>Створити резюме</h3></button>
         </div>
         <div class="col-sm-4">
-            <div class="col btn-group">
-                <button type="button" class="btn btn-primary">Вхід</button>
-                <button type="button" class="btn btn-primary">Реєстрація</button>
+            <div class="row">
+                <div class="col">
+                    <p>Шукачі роботи:</p>
+                    <div class="btn-group btn-group-lg">
+                        <button type="button" class="btn btn-primary">Вхід</button>
+                        <button type="button" class="btn btn-primary">Реєстрація</button>
+                    </div>
+                </div>
+                <div class="col">
+                    <p>Роботодавці:</p>
+                    <div class="btn-group btn-group-lg">
+                        <button type="button" class="btn btn-primary">Вхід</button>
+                        <button type="button" class="btn btn-primary">Реєстрація</button>
+                    </div>
+                </div>
             </div>
-            <div class="col btn-group">
-                <button type="button" class="btn btn-primary">Вхід</button>
-                <button type="button" class="btn btn-primary">Реєстрація</button>
+        </div>
+    </div>
+
+    <div class="form-group row pt-4">
+        <div class="col">
+            <label for="job_Category">Рубрика:</label>
+            <input type="text" class="form-control" id="job_Category">
+        </div>
+        <div class="col">
+            <label for="job_Location">Регіон:</label>
+            <input type="text" class="form-control" id="job_Location">
+        </div>
+        <div class="col">
+            <button type="button" class="btn btn-warning btn-lg btn-block">Знайти роботу!</button>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h2 class="panel-title">Реєстрація</h2>
+                </div>
+
+                <div class="panel-body">
+                    <form class="form-horizontal" data-bind="submit: addBook">
+                        <div class="form-group" data-bind="with: newBook">
+                            <label for="inputUserMail" class="col-sm-2 control-label">Title</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="inputTitle" data-bind="value:Title" />
+                            </div>
+
+                            <label for="inputYear" class="col-sm-2 control-label">Year</label>
+                            <div class="col-sm-10">
+                                <input type="number" class="form-control" id="inputYear" data-bind="value:Year" />
+                            </div>
+
+                            <label for="inputGenre" class="col-sm-2 control-label">Genre</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="inputGenre" data-bind="value:Genre" />
+                            </div>
+
+                            <label for="inputPrice" class="col-sm-2 control-label">Price</label>
+                            <div class="col-sm-10">
+                                <input type="number" step="any" class="form-control" id="inputPrice" data-bind="value:Price" />
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-default">Submit</button>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
