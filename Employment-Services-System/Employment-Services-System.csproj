@@ -176,7 +176,7 @@
       <DependentUpon>Employment-Services-Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\ValuesController.cs" />
+    <Compile Include="Controllers\user_accountController.cs" />
     <Compile Include="education_detail.cs">
       <DependentUpon>Employment-Services-Model.tt</DependentUpon>
     </Compile>
