@@ -1,4 +1,8 @@
-﻿<!DOCTYPE html>
+﻿@section scripts {
+    @Scripts.Render("~/bundles/app")
+}
+
+<!DOCTYPE html>
 <html lang="uk">
 <head>
     <title>Index</title>
@@ -57,7 +61,7 @@
     </div>
 
     <div class="row">
-        <div class="col">
+        @*<div class="col">
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <h2 class="panel-title">Реєстрація</h2>
@@ -90,6 +94,21 @@
                     </form>
                 </div>
             </div>
+        </div>*@
+        <div class="col">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h2 class="panel-title">Користувачі</h2>
+                </div>
+                <div class="panel-body">
+                    <ul class="list-unstyled" data-bind="foreach: user_accounts">
+                        <li>
+                            <span data-bind="text: Email"></span>;
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="alert alert-danger" data-bind="visible: error"><p data-bind="text: error"></p></div>
         </div>
     </div>
 

@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Description;
 using Employment_Services_System;
+using Employment_Services_System.Models;
 
 namespace Employment_Services_System.Controllers
 {
@@ -18,9 +19,17 @@ namespace Employment_Services_System.Controllers
         private EmploymentDataContext db = new EmploymentDataContext();
 
         // GET: api/user_account
-        public IQueryable<user_account> Getuser_account()
+        public IQueryable<UserAccountDTO> Getuser_account()
         {
-            return db.user_account;
+            var UserAccounts = from u in db.user_account
+                               select new UserAccountDTO()
+                               {
+                                   Id = u.id,
+                                   Email = u.email,
+                                   ContactNumber = u.contact_number,
+                                   UserType = u.user_type.user_type_name
+                               };
+            return UserAccounts;
         }
 
         // GET: api/user_account/5
