@@ -33,16 +33,30 @@ namespace Employment_Services_System.Controllers
         }
 
         // GET: api/user_account/5
-        [ResponseType(typeof(user_account))]
+        [ResponseType(typeof(UserAccountDetailsDTO))]
         public async Task<IHttpActionResult> Getuser_account(int id)
         {
-            user_account user_account = await db.user_account.FindAsync(id);
-            if (user_account == null)
+            UserAccountDetailsDTO UserDetails = await db.user_account.Include(u => u.user_type).Select(u =>
+                new UserAccountDetailsDTO()
+                {
+                    Id = u.id,
+                    UserType = u.user_type.user_type_name,
+                    Email = u.email,
+                    Password = u.password,
+                    DateOfBirth = u.date_of_birth,
+                    Gender = u.gender,
+                    IsActive = u.is_active,
+                    ContactNumber = u.contact_number,
+                    SmsNotificationActive = u.sms_notification_active,
+                    EmailNotificationActive = u.email_notification_active,
+                    RegistrationDate = u.registration_date
+                }).SingleOrDefaultAsync(u => u.Id == id);
+            if (UserDetails == null)
             {
                 return NotFound();
             }
 
-            return Ok(user_account);
+            return Ok(UserDetails);
         }
 
         // PUT: api/user_account/5
