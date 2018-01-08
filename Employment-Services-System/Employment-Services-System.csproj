@@ -222,6 +222,8 @@
     </Compile>
     <Compile Include="Models\JobPostDetailsDTO.cs" />
     <Compile Include="Models\JobPostDTO.cs" />
+    <Compile Include="Models\SeekerDetailsDTO.cs" />
+    <Compile Include="Models\SeekerDTO.cs" />
     <Compile Include="Models\UserAccountDetailsDTO.cs" />
     <Compile Include="Models\UserAccountDTO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -9,7 +9,7 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Description;
-using Employment_Services_System;
+using Employment_Services_System.Models;
 
 namespace Employment_Services_System.Controllers
 {
@@ -18,22 +18,110 @@ namespace Employment_Services_System.Controllers
         private EmploymentDataContext db = new EmploymentDataContext();
 
         // GET: api/seeker_profile
-        public IQueryable<seeker_profile> Getseeker_profile()
+        public IQueryable<SeekerDTO> Getseeker_profile()
         {
-            return db.seeker_profile;
+            var Seekers = from s in db.seeker_profile
+                          select new SeekerDTO()
+                          {
+                              Id = s.user_account_id,
+                              FirstName = s.first_name,
+                              LastName = s.last_name,
+                              SkillSetName = db.seeker_skill_set.FirstOrDefault(skill =>
+                                    skill.user_account_id == s.user_account_id)
+                                    .skill_set.skill_set_name,
+                              SkillLevel = db.seeker_skill_set.FirstOrDefault(skill =>
+                                    skill.user_account_id == s.user_account_id)
+                                    .skill_level,
+                              Degree = db.education_detail.FirstOrDefault(edu =>
+                                    edu.user_account_id == s.user_account_id)
+                                    .certificate_degree_name
+                          };
+
+            return Seekers;
         }
 
         // GET: api/seeker_profile/5
-        [ResponseType(typeof(seeker_profile))]
+        [ResponseType(typeof(SeekerDetailsDTO))]
         public async Task<IHttpActionResult> Getseeker_profile(int id)
         {
-            seeker_profile seeker_profile = await db.seeker_profile.FindAsync(id);
-            if (seeker_profile == null)
+            SeekerDetailsDTO Seeker = await db.seeker_profile.Select(s =>
+                new SeekerDetailsDTO()
+                {
+                    Id = s.user_account_id,
+                    _PersonalInfo = new SeekerDetailsDTO.PersonalInfo
+                    {
+                        FirstName = s.first_name,
+                        LastName = s.last_name
+                    },
+                    _ExperienceDetail = new SeekerDetailsDTO.ExperienceDetail
+                    {
+                        CurrentSalary = s.current_salary,
+                        Currency = s.currency,
+                        SkillSetName = s.seeker_skill_set.FirstOrDefault
+                            (skill => skill.user_account_id == s.user_account_id)
+                            .skill_set.skill_set_name,
+                        SkillLevel = s.seeker_skill_set.FirstOrDefault
+                            (skill => skill.user_account_id == s.user_account_id)
+                            .skill_level,
+                        JobTitle = s.experience_detail.FirstOrDefault
+                            (exp => exp.user_account_id == s.user_account_id)
+                            .job_title,
+                        CompanyName = s.experience_detail.FirstOrDefault
+                            (exp => exp.user_account_id == s.user_account_id)
+                            .company_name,
+                        JobLocationCity = s.experience_detail.FirstOrDefault
+                            (exp => exp.user_account_id == s.user_account_id)
+                            .job_location_city,
+                        JobLocationState = s.experience_detail.FirstOrDefault
+                            (exp => exp.user_account_id == s.user_account_id)
+                            .job_location_state,
+                        JobLocationCountry = s.experience_detail.FirstOrDefault
+                            (exp => exp.user_account_id == s.user_account_id)
+                            .job_location_country,
+                        Description = s.experience_detail.FirstOrDefault
+                            (exp => exp.user_account_id == s.user_account_id)
+                            .description,
+                        IsCurrentJob = s.experience_detail.FirstOrDefault
+                            (exp => exp.user_account_id == s.user_account_id)
+                            .is_current_job == "1" ? true : false,
+                        StartDate = s.experience_detail.FirstOrDefault
+                            (exp => exp.user_account_id == s.user_account_id)
+                            .start_date,
+                        EndDate = s.experience_detail.FirstOrDefault
+                            (exp => exp.user_account_id == s.user_account_id)
+                            .end_date,
+                    },
+                    _EducationDetail = new SeekerDetailsDTO.EducationDetail
+                    {
+                        CertificateDegreeName = s.education_detail.FirstOrDefault
+                            (edu => edu.user_account_id == s.user_account_id)
+                            .certificate_degree_name,
+                        Major = s.education_detail.FirstOrDefault
+                            (edu => edu.user_account_id == s.user_account_id)
+                            .certificate_degree_name,
+                        InstituteUniversityName = s.education_detail.FirstOrDefault
+                            (edu => edu.user_account_id == s.user_account_id)
+                            .Institute_university_name,
+                        StartingDate = s.education_detail.FirstOrDefault
+                            (edu => edu.user_account_id == s.user_account_id)
+                            .starting_date,
+                        CompletionDate = s.education_detail.FirstOrDefault
+                            (edu => edu.user_account_id == s.user_account_id)
+                            .completion_date,
+                        Percentage = s.education_detail.FirstOrDefault
+                            (edu => edu.user_account_id == s.user_account_id)
+                            .percentage,
+                        Cgpa = s.education_detail.FirstOrDefault
+                            (edu => edu.user_account_id == s.user_account_id)
+                            .cgpa,
+                    }
+                }).SingleOrDefaultAsync(s => s.Id == id);
+            if (Seeker == null)
             {
                 return NotFound();
             }
 
-            return Ok(seeker_profile);
+            return Ok(Seeker);
         }
 
         // PUT: api/seeker_profile/5
