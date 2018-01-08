@@ -174,8 +174,10 @@
     <Compile Include="company_image.cs">
       <DependentUpon>Employment-Services-Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="Controllers\business_streamController.cs" />
     <Compile Include="Controllers\companiesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\JobSearchController.cs" />
     <Compile Include="Controllers\job_postController.cs" />
     <Compile Include="Controllers\seeker_profileController.cs" />
     <Compile Include="Controllers\user_accountController.cs" />
@@ -218,6 +220,8 @@
     <Compile Include="job_type.cs">
       <DependentUpon>Employment-Services-Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\JobPostDetailsDTO.cs" />
+    <Compile Include="Models\JobPostDTO.cs" />
     <Compile Include="Models\UserAccountDetailsDTO.cs" />
     <Compile Include="Models\UserAccountDTO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

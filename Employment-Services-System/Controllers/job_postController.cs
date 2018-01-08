@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Description;
 using Employment_Services_System;
+using Employment_Services_System.Models;
 
 namespace Employment_Services_System.Controllers
 {
@@ -18,22 +19,43 @@ namespace Employment_Services_System.Controllers
         private EmploymentDataContext db = new EmploymentDataContext();
 
         // GET: api/job_post
-        public IQueryable<job_post> Getjob_post()
+        public IQueryable<JobPostDTO> Getjob_post()
         {
-            return db.job_post;
+            var JobPosts = from j in db.job_post
+                           select new JobPostDTO()
+                           {
+                               Id = j.id,
+                               JobType = j.job_type.job_type1,
+                               Company = j.company.company_name,
+                               JobDescription = j.job_description,
+                               JobLocationStreet = j.job_location.street_address,
+                           };
+            return JobPosts;
         }
 
         // GET: api/job_post/5
-        [ResponseType(typeof(job_post))]
+        [ResponseType(typeof(JobPostDetailsDTO))]
         public async Task<IHttpActionResult> Getjob_post(int id)
         {
-            job_post job_post = await db.job_post.FindAsync(id);
-            if (job_post == null)
+            JobPostDetailsDTO JobDetails = await db.job_post.Select(j =>
+                new JobPostDetailsDTO()
+                {
+                    Id = j.id,
+                    PostedBy = j.user_account.email,
+                    JobType = j.job_type.job_type1,
+                    Company = j.company.company_name,
+                    IsCompanyNameHidden = j.is_company_name_hidden,
+                    CreatedDate = j.created_date,
+                    JobDescription = j.job_description,
+                    JobLocationStreet = j.job_location.street_address,
+                    is_active = j.is_active
+                }).SingleOrDefaultAsync(j => j.Id == id);
+            if (JobDetails == null)
             {
                 return NotFound();
             }
 
-            return Ok(job_post);
+            return Ok(JobDetails);
         }
 
         // PUT: api/job_post/5
