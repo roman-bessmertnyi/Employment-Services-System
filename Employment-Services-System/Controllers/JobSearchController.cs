@@ -26,8 +26,8 @@ namespace Employment_Services_System.Controllers
             string keyword="",
             string location="")
         {
-            var JobPosts = from j in db.job_post.
-                           Where(job_post =>
+            var JobPosts = from j in db.job_post
+                           .Where(job_post =>
                                (
                                    job_post.job_type.job_type1.Contains(keyword) ||
                                    job_post.company.company_name.Contains(keyword) ||

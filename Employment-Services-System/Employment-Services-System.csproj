@@ -179,6 +179,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\JobSearchController.cs" />
     <Compile Include="Controllers\job_postController.cs" />
+    <Compile Include="Controllers\SeekerSearchController.cs" />
     <Compile Include="Controllers\seeker_profileController.cs" />
     <Compile Include="Controllers\user_accountController.cs" />
     <Compile Include="education_detail.cs">
