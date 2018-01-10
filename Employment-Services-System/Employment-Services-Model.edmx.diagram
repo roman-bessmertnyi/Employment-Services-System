@@ -39,6 +39,8 @@
         <AssociationConnector Association="Model.seeker_skill_set_skill_set" ManuallyRouted="false" />
         <AssociationConnector Association="Model.use_log_user_register" ManuallyRouted="false" />
         <AssociationConnector Association="Model.user_register_user_type" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="Model.View_1" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="Model.View_Seekers" Width="1.5" PointX="0.75" PointY="11.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

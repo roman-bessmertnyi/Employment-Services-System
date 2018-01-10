@@ -101,7 +101,7 @@ namespace Employment_Services_System.Controllers
                             .certificate_degree_name,
                         InstituteUniversityName = s.education_detail.FirstOrDefault
                             (edu => edu.user_account_id == s.user_account_id)
-                            .Institute_university_name,
+                            .institute_university_name,
                         StartingDate = s.education_detail.FirstOrDefault
                             (edu => edu.user_account_id == s.user_account_id)
                             .starting_date,

@@ -221,6 +221,7 @@
     <Compile Include="job_type.cs">
       <DependentUpon>Employment-Services-Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\JobPostDetailsDTO.cs" />
     <Compile Include="Models\JobPostDTO.cs" />
     <Compile Include="Models\SeekerDetailsDTO.cs" />
@@ -237,6 +238,12 @@
     <Compile Include="skill_set.cs">
       <DependentUpon>Employment-Services-Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="sp_helpdiagramdefinition_Result.cs">
+      <DependentUpon>Employment-Services-Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_helpdiagrams_Result.cs">
+      <DependentUpon>Employment-Services-Model.tt</DependentUpon>
+    </Compile>
     <Compile Include="sysdiagrams.cs">
       <DependentUpon>Employment-Services-Model.tt</DependentUpon>
     </Compile>
@@ -247,6 +254,12 @@
       <DependentUpon>Employment-Services-Model.tt</DependentUpon>
     </Compile>
     <Compile Include="user_type.cs">
+      <DependentUpon>Employment-Services-Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="View_1.cs">
+      <DependentUpon>Employment-Services-Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="View_Seekers.cs">
       <DependentUpon>Employment-Services-Model.tt</DependentUpon>
     </Compile>
   </ItemGroup>

@@ -62,7 +62,7 @@ namespace Employment_Services_System.Controllers
                                 db.education_detail.Any(edu =>
                                     (edu.user_account_id == s.user_account_id)
                                     &&
-                                    (edu.Institute_university_name.Contains(keyword)))
+                                    (edu.institute_university_name.Contains(keyword)))
                             )
                             &&
                             (
@@ -151,7 +151,7 @@ namespace Employment_Services_System.Controllers
                                 db.education_detail.Any(edu =>
                                     (edu.user_account_id == s.user_account_id)
                                     &&
-                                    (edu.Institute_university_name.Contains(keyword)))
+                                    (edu.institute_university_name.Contains(keyword)))
                             )
                             &&
                             (

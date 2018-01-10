@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="business_stream">
           <Key>
             <PropertyRef Name="id" />
@@ -40,7 +40,7 @@
           <Property Name="user_account_id" Type="int" Nullable="false" />
           <Property Name="certificate_degree_name" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="major" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="Institute_university_name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="institute_university_name" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="starting_date" Type="date" Nullable="false" />
           <Property Name="completion_date" Type="date" />
           <Property Name="percentage" Type="int" />
@@ -181,6 +181,53 @@
           </Key>
           <Property Name="id" Type="int" Nullable="false" />
           <Property Name="user_type_name" Type="varchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Employment-Services-System-Alpha.dbo.View_1' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="View_1">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="job_type" />
+            <PropertyRef Name="company_name" />
+            <PropertyRef Name="job_description" />
+            <PropertyRef Name="street_address" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="job_type" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="company_name" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="job_description" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="street_address" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="skill_level" Type="int" />
+          <Property Name="skill_set_name" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Employment-Services-System-Alpha.dbo.View_Seekers' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="View_Seekers">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="is_company_name_hidden" />
+            <PropertyRef Name="created_date" />
+            <PropertyRef Name="job_description" />
+            <PropertyRef Name="is_active" />
+            <PropertyRef Name="skill_level" />
+            <PropertyRef Name="job_type" />
+            <PropertyRef Name="email" />
+            <PropertyRef Name="registration_date" />
+            <PropertyRef Name="company_name" />
+            <PropertyRef Name="street_address" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="is_company_name_hidden" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="created_date" Type="date" Nullable="false" />
+          <Property Name="job_description" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="is_active" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="skill_level" Type="int" Nullable="false" />
+          <Property Name="job_type" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="email" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="user_image" Type="image" />
+          <Property Name="registration_date" Type="date" Nullable="false" />
+          <Property Name="company_name" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="street_address" Type="varchar" MaxLength="100" Nullable="false" />
         </EntityType>
         <Association Name="company_business_stream">
           <End Role="business_stream" Type="Self.business_stream" Multiplicity="1" />
@@ -386,6 +433,37 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+        <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <EntityContainer Name="ModelStoreContainer">
           <EntitySet Name="business_stream" EntityType="Self.business_stream" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="company" EntityType="Self.company" Schema="dbo" store:Type="Tables" />
@@ -404,6 +482,33 @@
           <EntitySet Name="user_account" EntityType="Self.user_account" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="user_log" EntityType="Self.user_log" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="user_type" EntityType="Self.user_type" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="View_1" EntityType="Self.View_1" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [View_1].[id] AS [id], 
+    [View_1].[job_type] AS [job_type], 
+    [View_1].[company_name] AS [company_name], 
+    [View_1].[job_description] AS [job_description], 
+    [View_1].[street_address] AS [street_address], 
+    [View_1].[skill_level] AS [skill_level], 
+    [View_1].[skill_set_name] AS [skill_set_name]
+    FROM [dbo].[View_1] AS [View_1]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="View_Seekers" EntityType="Self.View_Seekers" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [View_Seekers].[id] AS [id], 
+    [View_Seekers].[is_company_name_hidden] AS [is_company_name_hidden], 
+    [View_Seekers].[created_date] AS [created_date], 
+    [View_Seekers].[job_description] AS [job_description], 
+    [View_Seekers].[is_active] AS [is_active], 
+    [View_Seekers].[skill_level] AS [skill_level], 
+    [View_Seekers].[job_type] AS [job_type], 
+    [View_Seekers].[email] AS [email], 
+    [View_Seekers].[user_image] AS [user_image], 
+    [View_Seekers].[registration_date] AS [registration_date], 
+    [View_Seekers].[company_name] AS [company_name], 
+    [View_Seekers].[street_address] AS [street_address]
+    FROM [dbo].[View_Seekers] AS [View_Seekers]</DefiningQuery>
+          </EntitySet>
           <AssociationSet Name="company_business_stream" Association="Self.company_business_stream">
             <End Role="business_stream" EntitySet="business_stream" />
             <End Role="company" EntitySet="company" />
@@ -473,8 +578,7 @@
             <End Role="user_account" EntitySet="user_account" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -518,12 +622,12 @@
           <Property Name="user_account_id" Type="Int32" Nullable="false" />
           <Property Name="certificate_degree_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="major" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Institute_university_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="starting_date" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="completion_date" Type="DateTime" Precision="0" />
           <Property Name="percentage" Type="Int32" />
           <Property Name="cgpa" Type="Int32" />
           <NavigationProperty Name="seeker_profile" Relationship="Self.educ_dtl_seeker_profile" FromRole="education_detail" ToRole="seeker_profile" />
+          <Property Name="institute_university_name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="experience_detail">
           <Key>
@@ -979,7 +1083,93 @@
             <End Role="user_type" EntitySet="user_type" />
             <End Role="user_account" EntitySet="user_account" />
           </AssociationSet>
+          <EntitySet Name="View_1" EntityType="Model.View_1" />
+          <EntitySet Name="View_Seekers" EntityType="Model.View_Seekers" />
+          <FunctionImport Name="sp_alterdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_creatediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_dropdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(Model.sp_helpdiagramdefinition_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(Model.sp_helpdiagrams_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_renamediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="new_diagramname" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_upgraddiagrams" />
         </EntityContainer>
+        <EntityType Name="View_1">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="job_type" />
+            <PropertyRef Name="company_name" />
+            <PropertyRef Name="job_description" />
+            <PropertyRef Name="street_address" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="job_type" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="company_name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="job_description" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="street_address" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="skill_level" Type="Int32" />
+          <Property Name="skill_set_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="View_Seekers">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="is_company_name_hidden" />
+            <PropertyRef Name="created_date" />
+            <PropertyRef Name="job_description" />
+            <PropertyRef Name="is_active" />
+            <PropertyRef Name="skill_level" />
+            <PropertyRef Name="job_type" />
+            <PropertyRef Name="email" />
+            <PropertyRef Name="registration_date" />
+            <PropertyRef Name="company_name" />
+            <PropertyRef Name="street_address" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="is_company_name_hidden" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="created_date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="job_description" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="is_active" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="skill_level" Type="Int32" Nullable="false" />
+          <Property Name="job_type" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="email" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="user_image" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="registration_date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="company_name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="street_address" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <ComplexType Name="sp_helpdiagramdefinition_Result">
+          <Property Type="Int32" Name="version" Nullable="true" />
+          <Property Type="Binary" Name="definition" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_helpdiagrams_Result">
+          <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+          <Property Type="Int32" Name="OwnerID" Nullable="false" />
+        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1018,10 +1208,10 @@
           <EntitySetMapping Name="education_detail">
             <EntityTypeMapping TypeName="Model.education_detail">
               <MappingFragment StoreEntitySet="education_detail">
+                <ScalarProperty Name="institute_university_name" ColumnName="institute_university_name" />
                 <ScalarProperty Name="user_account_id" ColumnName="user_account_id" />
                 <ScalarProperty Name="certificate_degree_name" ColumnName="certificate_degree_name" />
                 <ScalarProperty Name="major" ColumnName="major" />
-                <ScalarProperty Name="Institute_university_name" ColumnName="Institute_university_name" />
                 <ScalarProperty Name="starting_date" ColumnName="starting_date" />
                 <ScalarProperty Name="completion_date" ColumnName="completion_date" />
                 <ScalarProperty Name="percentage" ColumnName="percentage" />
@@ -1173,6 +1363,61 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="View_1">
+            <EntityTypeMapping TypeName="Model.View_1">
+              <MappingFragment StoreEntitySet="View_1">
+                <ScalarProperty Name="skill_set_name" ColumnName="skill_set_name" />
+                <ScalarProperty Name="skill_level" ColumnName="skill_level" />
+                <ScalarProperty Name="street_address" ColumnName="street_address" />
+                <ScalarProperty Name="job_description" ColumnName="job_description" />
+                <ScalarProperty Name="company_name" ColumnName="company_name" />
+                <ScalarProperty Name="job_type" ColumnName="job_type" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="View_Seekers">
+            <EntityTypeMapping TypeName="Model.View_Seekers">
+              <MappingFragment StoreEntitySet="View_Seekers">
+                <ScalarProperty Name="street_address" ColumnName="street_address" />
+                <ScalarProperty Name="company_name" ColumnName="company_name" />
+                <ScalarProperty Name="registration_date" ColumnName="registration_date" />
+                <ScalarProperty Name="user_image" ColumnName="user_image" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="job_type" ColumnName="job_type" />
+                <ScalarProperty Name="skill_level" ColumnName="skill_level" />
+                <ScalarProperty Name="is_active" ColumnName="is_active" />
+                <ScalarProperty Name="job_description" ColumnName="job_description" />
+                <ScalarProperty Name="created_date" ColumnName="created_date" />
+                <ScalarProperty Name="is_company_name_hidden" ColumnName="is_company_name_hidden" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="Model.Store.sp_alterdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="Model.Store.sp_creatediagram" />
+          <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="Model.Store.sp_dropdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="Model.Store.sp_helpdiagramdefinition">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Model.sp_helpdiagramdefinition_Result">
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="Model.Store.sp_helpdiagrams">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Model.sp_helpdiagrams_Result">
+                <ScalarProperty Name="Database" ColumnName="Database" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Owner" ColumnName="Owner" />
+                <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="Model.Store.sp_renamediagram" />
+          <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="Model.Store.sp_upgraddiagrams" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
