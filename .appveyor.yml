@@ -6,8 +6,8 @@ services:
 before_build:
  - nuget restore
 build_script:
+- msbuild Employment-Services-System.sln
 - ps: |
-        - msbuild Employment-Services-System.sln
         $startPath = "$($env:appveyor_build_folder)\Employment-Services-System\Employment-Services-System.Test\bin"
         $sqlInstance = "(local)\SQL2012SP1"
         $dbName = "TestDatabase"
