@@ -10,7 +10,6 @@ namespace Employment_Services_System.Tests
     /// <summary>
     /// Summary description for DataTestBase
     /// </summary>
-    [TestClass]
     public class DataTestBase : IDisposable
     {
         public EmploymentDataContext employmentDataContext;

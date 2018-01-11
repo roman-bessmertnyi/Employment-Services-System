@@ -10,7 +10,7 @@ using Xunit;
 namespace Employment_Services_System.Tests
 {
     
-    public class business_streamTests : DataTestBase
+    public class business_streamTests
     {
         [Fact]
         public void business_streamPropertiesWork()
