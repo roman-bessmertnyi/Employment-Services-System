@@ -8,7 +8,7 @@ before_build:
 build_script:
 - msbuild Employment-Services-System.sln
 - ps: |
-        $startPath = "$($env:appveyor_build_folder)\Employment-Services-System.Test\bin"
+        $startPath = "$($env:appveyor_build_folder)\Employment-Services-System.Test\bin\Debug"
         $sqlInstance = "(local)\SQL2012SP1"
         $dbName = "TestDatabase"
 
