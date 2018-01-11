@@ -1,5 +1,5 @@
 services:
-  - mssql2014
+  - mssql2017
 before_build:
  - nuget restore
 build_script:
