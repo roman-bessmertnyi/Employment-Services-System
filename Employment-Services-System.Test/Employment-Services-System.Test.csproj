@@ -97,7 +97,7 @@
   <ItemGroup>
     <Compile Include="business_streamTests.cs" />
     <Compile Include="DataTestBase.cs" />
-    <Compile Include="UnitTest1.cs" />
+    <Compile Include="job_postTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
