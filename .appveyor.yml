@@ -1,25 +1,10 @@
 services:
   - mssql2014
-  
-$startPath = "$($env:appveyor_build_folder)\Employment-Services-System\Employment-Services-System.Test\bin"
-$sqlInstance = "(local)\SQL2014"
-$dbName = "TestDatabase"
-
-# replace the db connection with the local instance
-$config = join-path $startPath "Employment-Services-System.Test.dll.config"
-$doc = (gc $config) -as [xml]
-$doc.SelectSingleNode('//connectionStrings/add[@name="TestConnection"]').connectionString = "Server=$sqlInstance; Database=$dbName; Trusted_connection=true"
-$doc.Save($config)
-
-# attach mdf to local instance
-$mdfFile = join-path $startPath "TestConnection.mdf"
-$ldfFile = join-path $startPath "TestConnection_log.ldf"
-sqlcmd -S "$sqlInstance" -Q "Use [master]; CREATE DATABASE [$dbName] ON (FILENAME = '$mdfFile'),(FILENAME = '$ldfFile') for ATTACH"
-
 before_build:
  - nuget restore
 build_script:
  - msbuild Employment-Services-System.sln
+ - ps: datamover.bp1
 test_script:
  - .\packages\OpenCover.4.6.519\tools\OpenCover.Console.exe -register:user -target:".\packages\xunit.runner.console.2.3.1\tools\net452\xunit.console.x86.exe" -targetargs:"Employment-Services-System.Test\bin\Debug\Employment-Services-System.Test.dll -noshadow" -output:"coverage.xml"
 after_test:
