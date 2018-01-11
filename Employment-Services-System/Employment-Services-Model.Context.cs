@@ -21,7 +21,7 @@ namespace Employment_Services_System
             : base(connectionStringName)
         {
         }
-    
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             throw new UnintentionalCodeFirstException();
