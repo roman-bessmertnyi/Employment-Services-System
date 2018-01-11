@@ -1,15 +1,12 @@
 services:
   - mssql2014
-  
-
-
 before_build:
  - nuget restore
 build_script:
 - msbuild Employment-Services-System.sln
 - ps: |
         $startPath = "$($env:appveyor_build_folder)\Employment-Services-System.Test\bin\Debug"
-        $sqlInstance = "(local)\SQL2012SP1"
+        $sqlInstance = "(local)\SQL2014"
         $dbName = "TestDatabase"
 
         # replace the db connection with the local instance
@@ -21,7 +18,7 @@ build_script:
         # attach mdf to local instance
         $mdfFile = join-path $startPath "TestConnection.mdf"
         $ldfFile = join-path $startPath "TestConnection_log.ldf"
-        sqlcmd -S "$sqlInstance" -Q "Use [master]; CREATE DATABASE [$dbName] ON (FILENAME = '$mdfFile'),(FILENAME = '$ldfFile') for ATTACH"
+        sqlcmd -S "$sqlInstance" -Q "Use [TestConnection]; CREATE DATABASE [$dbName] ON (FILENAME = '$mdfFile'),(FILENAME = '$ldfFile') for ATTACH"
  
  
 test_script:
