@@ -22,6 +22,6 @@ build_script:
  
  
 test_script:
- - .\packages\OpenCover.4.6.519\tools\OpenCover.Console.exe -register:user -target:".\packages\xunit.runner.console.2.3.1\tools\net452\xunit.console.x86.exe" -targetargs:"Employment-Services-System.Test\bin\Debug\Employment-Services-System.Test.dll -noshadow" -filter:"+[*]* -[Employment-Services-System.Test]* -[Employment_Services_System]Employment_Services_System.Areas.HelpPage* -[Employment_Services_System]Employment_Services_System.Controllers*" -output:"coverage.xml"
+ - .\packages\OpenCover.4.6.519\tools\OpenCover.Console.exe -register:user -target:".\packages\xunit.runner.console.2.3.1\tools\net452\xunit.console.x86.exe" -targetargs:"Employment-Services-System.Test\bin\Debug\Employment-Services-System.Test.dll -noshadow" -filter:"+[*]* -[Employment-Services-System.Test]* -[Employment_Services_System]Employment_Services_System.Areas.HelpPage.* -[Employment_Services_System]Employment_Services_System.Controllers.*" -output:"coverage.xml"
 after_test:
  - .\packages\Codecov.1.0.3\tools\codecov.exe -f "coverage.xml"
