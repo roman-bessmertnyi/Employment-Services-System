@@ -16,8 +16,8 @@ build_script:
         $doc.Save($config)
 
         # attach mdf to local instance
-        $mdfFile = join-path $startPath "TestConnection.mdf"
-        $ldfFile = join-path $startPath "TestConnection_log.ldf"
+        $mdfFile = "$($env:appveyor_build_folder)\Database\Test\TestConnection.mdf"
+        $ldfFile = "$($env:appveyor_build_folder)\Database\Test\TestConnection.ldf"
         sqlcmd -S "$sqlInstance" -Q "Use [TestConnection]; CREATE DATABASE [$dbName] ON (FILENAME = '$mdfFile'),(FILENAME = '$ldfFile') for ATTACH"
  
  
