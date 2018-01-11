@@ -18,7 +18,7 @@ build_script:
         # attach mdf to local instance
         $mdfFile = "$($env:appveyor_build_folder)\Database\Test\TestData.mdf"
         $ldfFile = "$($env:appveyor_build_folder)\Database\Test\Employment-Services-System-Alpha.ldf"
-        sqlcmd -S "$sqlInstance" -Q "Use [master]; CREATE DATABASE [$dbName] ON (FILENAME = '$mdfFile'),(FILENAME = '$ldfFile') for ATTACH"
+        sqlcmd -S "$sqlInstance" -Q "Use [TestConnection]; CREATE DATABASE [$dbName] ON (FILENAME = '$mdfFile'),(FILENAME = '$ldfFile') for ATTACH"
  
  
 test_script:
