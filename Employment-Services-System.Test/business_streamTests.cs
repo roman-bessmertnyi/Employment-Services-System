@@ -10,7 +10,7 @@ using Xunit;
 namespace Employment_Services_System.Tests
 {
     
-    public class business_streamTests
+    public class business_streamTests : DataTestBase
     {
         [Fact]
         public void business_streamPropertiesWork()
@@ -32,6 +32,11 @@ namespace Employment_Services_System.Tests
             };
 
             bs1.company.Add(_company);
+
+            employmentDataContext.business_stream.Add(bs1);
+            Xunit.Assert.NotEqual(0, employmentDataContext.SaveChanges());
+
+            bs1 = employmentDataContext.business_stream.Find(bs1.id);
 
             Xunit.Assert.NotNull(bs1);
             Xunit.Assert.NotNull(bs1.company);
