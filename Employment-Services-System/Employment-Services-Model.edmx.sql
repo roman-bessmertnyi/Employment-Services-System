@@ -2,13 +2,13 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 01/11/2018 12:18:02
+-- Date Created: 01/11/2018 16:24:56
 -- Generated from EDMX file: D:\KPI\Курсовая\Employment Services\Employment-Services-System\Employment-Services-System\Employment-Services-Model.edmx
 -- --------------------------------------------------
 
 SET QUOTED_IDENTIFIER OFF;
 GO
-USE [TestConnection];
+USE [TestData];
 GO
 IF SCHEMA_ID(N'dbo') IS NULL EXECUTE(N'CREATE SCHEMA [dbo]');
 GO
@@ -23,23 +23,20 @@ GO
 IF OBJECT_ID(N'[dbo].[FK_company_image_company]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[company_image] DROP CONSTRAINT [FK_company_image_company];
 GO
+IF OBJECT_ID(N'[dbo].[FK_job_post_company]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[job_post] DROP CONSTRAINT [FK_job_post_company];
+GO
 IF OBJECT_ID(N'[dbo].[FK_educ_dtl_seeker_profile]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[education_detail] DROP CONSTRAINT [FK_educ_dtl_seeker_profile];
 GO
 IF OBJECT_ID(N'[dbo].[FK_exp_dtl_seeker_profile]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[experience_detail] DROP CONSTRAINT [FK_exp_dtl_seeker_profile];
 GO
-IF OBJECT_ID(N'[dbo].[FK_job_post_act_user_register]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[job_post_activity] DROP CONSTRAINT [FK_job_post_act_user_register];
+IF OBJECT_ID(N'[dbo].[FK_job_post_job_location]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[job_post] DROP CONSTRAINT [FK_job_post_job_location];
 GO
 IF OBJECT_ID(N'[dbo].[FK_job_post_activity_job_post]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[job_post_activity] DROP CONSTRAINT [FK_job_post_activity_job_post];
-GO
-IF OBJECT_ID(N'[dbo].[FK_job_post_company]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[job_post] DROP CONSTRAINT [FK_job_post_company];
-GO
-IF OBJECT_ID(N'[dbo].[FK_job_post_job_location]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[job_post] DROP CONSTRAINT [FK_job_post_job_location];
 GO
 IF OBJECT_ID(N'[dbo].[FK_job_post_job_type]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[job_post] DROP CONSTRAINT [FK_job_post_job_type];
@@ -47,20 +44,23 @@ GO
 IF OBJECT_ID(N'[dbo].[FK_job_post_skill_set_job_post]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[job_post_skill_set] DROP CONSTRAINT [FK_job_post_skill_set_job_post];
 GO
-IF OBJECT_ID(N'[dbo].[FK_job_post_skill_set_skill_set]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[job_post_skill_set] DROP CONSTRAINT [FK_job_post_skill_set_skill_set];
-GO
 IF OBJECT_ID(N'[dbo].[FK_job_post_user_register]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[job_post] DROP CONSTRAINT [FK_job_post_user_register];
+GO
+IF OBJECT_ID(N'[dbo].[FK_job_post_act_user_register]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[job_post_activity] DROP CONSTRAINT [FK_job_post_act_user_register];
+GO
+IF OBJECT_ID(N'[dbo].[FK_job_post_skill_set_skill_set]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[job_post_skill_set] DROP CONSTRAINT [FK_job_post_skill_set_skill_set];
 GO
 IF OBJECT_ID(N'[dbo].[FK_seeker_profile_user_register]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[seeker_profile] DROP CONSTRAINT [FK_seeker_profile_user_register];
 GO
-IF OBJECT_ID(N'[dbo].[FK_seeker_skill_set_skill_set]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[seeker_skill_set] DROP CONSTRAINT [FK_seeker_skill_set_skill_set];
-GO
 IF OBJECT_ID(N'[dbo].[FK_skill_set_seeker_profile]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[seeker_skill_set] DROP CONSTRAINT [FK_skill_set_seeker_profile];
+GO
+IF OBJECT_ID(N'[dbo].[FK_seeker_skill_set_skill_set]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[seeker_skill_set] DROP CONSTRAINT [FK_seeker_skill_set_skill_set];
 GO
 IF OBJECT_ID(N'[dbo].[FK_use_log_user_register]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[user_log] DROP CONSTRAINT [FK_use_log_user_register];
@@ -124,11 +124,11 @@ GO
 IF OBJECT_ID(N'[dbo].[user_type]', 'U') IS NOT NULL
     DROP TABLE [dbo].[user_type];
 GO
-IF OBJECT_ID(N'[ModelStoreContainer].[View_1]', 'U') IS NOT NULL
-    DROP TABLE [ModelStoreContainer].[View_1];
+IF OBJECT_ID(N'[dbo].[View_1]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[View_1];
 GO
-IF OBJECT_ID(N'[ModelStoreContainer].[View_Seekers]', 'U') IS NOT NULL
-    DROP TABLE [ModelStoreContainer].[View_Seekers];
+IF OBJECT_ID(N'[dbo].[View_Seekers]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[View_Seekers];
 GO
 
 -- --------------------------------------------------
