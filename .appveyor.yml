@@ -7,7 +7,7 @@ build_script:
 - ps: |
         $startPath = "$($env:appveyor_build_folder)\Employment-Services-System.Test\bin\Debug"
         $sqlInstance = "(local)\SQL2014"
-        $dbName = "TestDatabase"
+        $dbName = "TestConnection"
 
         # replace the db connection with the local instance
         $config = join-path $startPath "Employment-Services-System.Test.dll.config"
