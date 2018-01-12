@@ -99,6 +99,7 @@
     <Compile Include="DataTestBase.cs" />
     <Compile Include="job_postTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="seeker_profileTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
