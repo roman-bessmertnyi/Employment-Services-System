@@ -10,8 +10,7 @@
 namespace Employment_Services_System
 {
     using System;
-
-    [Uncover]
+    
     public partial class sp_helpdiagrams_Result
     {
         public string Database { get; set; }

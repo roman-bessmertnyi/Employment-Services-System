@@ -4,8 +4,7 @@ namespace Employment_Services_System.Migrations
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
     using System.Linq;
-
-    [Uncover]
+    
     internal sealed class Configuration : DbMigrationsConfiguration<Employment_Services_System.EmploymentDataContext>
     {
         public Configuration()

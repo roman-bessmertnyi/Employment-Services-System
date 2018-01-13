@@ -7,7 +7,6 @@ using System.Web.Routing;
 
 namespace Employment_Services_System.AppStart
 {
-    [Uncover]
     public class RouteConfig
     {
         public static void RegisterRoutes(RouteCollection routes)

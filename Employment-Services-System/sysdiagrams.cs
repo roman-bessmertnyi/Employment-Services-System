@@ -11,8 +11,7 @@ namespace Employment_Services_System
 {
     using System;
     using System.Collections.Generic;
-
-    [Uncover]
+    
     public partial class sysdiagrams
     {
         public string name { get; set; }
