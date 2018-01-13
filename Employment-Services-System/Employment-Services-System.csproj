@@ -274,12 +274,6 @@
     <Compile Include="user_type.cs">
       <DependentUpon>Employment-Services-Model.tt</DependentUpon>
     </Compile>
-    <Compile Include="View_1.cs">
-      <DependentUpon>Employment-Services-Model.tt</DependentUpon>
-    </Compile>
-    <Compile Include="View_Seekers.cs">
-      <DependentUpon>Employment-Services-Model.tt</DependentUpon>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Data\TestData.mdf" />

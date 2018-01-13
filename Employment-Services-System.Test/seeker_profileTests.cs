@@ -74,7 +74,18 @@ namespace Employment_Services_System.Test
                 "dtuksdsddtk" +
                 "dykdk"
             });
-
+            _seeker_profile.seeker_skill_set.Add(new seeker_skill_set()
+            {
+                seeker_profile = _seeker_profile,
+                skill_level = 5,
+                skill_set = new skill_set()
+                {
+                    id = 1,
+                    skill_set_name = "skill name"
+                },
+                skill_set_id = 1,
+                user_account_id = 1
+            });
 
             Xunit.Assert.NotNull(_seeker_profile);
         }

@@ -44,8 +44,6 @@ namespace Employment_Services_System
         public virtual DbSet<user_account> user_account { get; set; }
         public virtual DbSet<user_log> user_log { get; set; }
         public virtual DbSet<user_type> user_type { get; set; }
-        public virtual DbSet<View_1> View_1 { get; set; }
-        public virtual DbSet<View_Seekers> View_Seekers { get; set; }
     
         public virtual int sp_alterdiagram(string diagramname, Nullable<int> owner_id, Nullable<int> version, byte[] definition)
         {
