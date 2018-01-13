@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
 
-namespace Employment_Services_System
+namespace Employment_Services_System.AppStart
 {
     public static class WebApiConfig
     {

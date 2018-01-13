@@ -1,7 +1,7 @@
 ﻿using System.Web;
 using System.Web.Optimization;
 
-namespace Employment_Services_System
+namespace Employment_Services_System.AppStart
 {
     public class BundleConfig
     {
