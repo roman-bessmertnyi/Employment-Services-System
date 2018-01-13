@@ -10,6 +10,7 @@ using Employment_Services_System.AppStart;
 
 namespace Employment_Services_System
 {
+    [Uncover]
     public class WebApiApplication : System.Web.HttpApplication
     {
         protected void Application_Start()

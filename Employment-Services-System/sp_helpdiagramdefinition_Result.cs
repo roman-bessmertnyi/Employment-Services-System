@@ -10,7 +10,8 @@
 namespace Employment_Services_System
 {
     using System;
-    
+
+    [Uncover]
     public partial class sp_helpdiagramdefinition_Result
     {
         public Nullable<int> version { get; set; }

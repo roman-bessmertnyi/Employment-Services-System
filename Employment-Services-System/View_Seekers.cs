@@ -11,7 +11,8 @@ namespace Employment_Services_System
 {
     using System;
     using System.Collections.Generic;
-    
+
+    [Uncover]
     public partial class View_Seekers
     {
         public int id { get; set; }

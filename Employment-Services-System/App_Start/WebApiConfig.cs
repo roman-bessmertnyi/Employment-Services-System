@@ -5,6 +5,7 @@ using System.Web.Http;
 
 namespace Employment_Services_System.AppStart
 {
+    [Uncover]
     public static class WebApiConfig
     {
         public static void Register(HttpConfiguration config)
