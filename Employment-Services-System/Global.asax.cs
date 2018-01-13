@@ -9,6 +9,7 @@ using System.Web.Routing;
 
 namespace Employment_Services_System
 {
+    [Uncover]
     public class WebApiApplication : System.Web.HttpApplication
     {
         protected void Application_Start()
