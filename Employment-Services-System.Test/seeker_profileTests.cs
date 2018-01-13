@@ -33,6 +33,17 @@ namespace Employment_Services_System.Test
                     registration_date = DateTime.Now,
                     sms_notification_active = "1",
                     user_type_id = 1,
+                    user_type = new user_type()
+                    {
+                        id = 1,
+                        user_type_name = "seeker"
+                    },
+                    user_log = new user_log()
+                    {
+                        last_job_apply_date = DateTime.Now,
+                        user_account_id = 1,
+                        last_login_date = DateTime.Now,
+                    }
                 },
             };
             _seeker_profile.education_detail.Add(new education_detail()
@@ -44,7 +55,26 @@ namespace Employment_Services_System.Test
                 major = "",
                 percentage = 100,
                 starting_date = DateTime.Now,
+                user_account_id = 1,
+                seeker_profile = _seeker_profile
             });
+            _seeker_profile.experience_detail.Add(new experience_detail()
+            {
+                user_account_id = 1,
+                is_current_job = "1",
+                start_date = DateTime.Now,
+                end_date = DateTime.Now,
+                job_title = "loltitle",
+                company_name = "lolcompany",
+                job_location_city = "dfjyjy",
+                job_location_country = "stsrtj",
+                job_location_state = "asthsrth",
+                seeker_profile = _seeker_profile,
+                description = "dhjdkdtuk" +
+                "dtuksdsddtk" +
+                "dykdk"
+            });
+
 
             Xunit.Assert.NotNull(_seeker_profile);
         }

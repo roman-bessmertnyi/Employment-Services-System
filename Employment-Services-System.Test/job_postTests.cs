@@ -28,7 +28,7 @@ namespace Employment_Services_System.Tests
                     business_stream_id = 1,
                     company_website_url = "name1.com",
                     establishment_date = DateTime.Now,
-                    profile_description = "desc1"
+                    profile_description = "desc1",
                 },
                 job_location = new job_location()
                 {
@@ -58,11 +58,25 @@ namespace Employment_Services_System.Tests
                     id = 1,
                     job_type1 = "loljob",
                 },
+                posted_by_id = 1,
+                job_location_id = 1,
+                company_id = 1,
+                job_type_id = 1
+            };
+            company_image _company_image = new company_image()
+            {
+                id = 1,
+                company_id = 1,
+                company_image1 = new byte[256],
+                company = _job_post.company
             };
             _job_post.job_post_activity.Add(new job_post_activity()
             {
                 apply_date = DateTime.Now,
                 user_account = _job_post.user_account,
+                user_account_id = _job_post.user_account.id,
+                job_post = _job_post,
+                job_post_id = _job_post.id
             });
             _job_post.job_post_skill_set.Add(new job_post_skill_set()
             {
@@ -71,7 +85,10 @@ namespace Employment_Services_System.Tests
                 {
                     id = 1,
                     skill_set_name = "skill name"
-                }
+                },
+                skill_set_id = 1,
+                job_post = _job_post,
+                job_post_id = _job_post.id
             });
 
             Xunit.Assert.NotNull(_job_post);

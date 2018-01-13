@@ -28,7 +28,9 @@ namespace Employment_Services_System.Tests
                 business_stream_id = 1,
                 company_website_url = "name1.com",
                 establishment_date = DateTime.Now,
-                profile_description = "desc1"
+                profile_description = "desc1",
+                business_stream = bs1
+                
             };
 
             bs1.company.Add(_company);
