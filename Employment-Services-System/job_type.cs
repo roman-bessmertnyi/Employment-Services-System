@@ -21,7 +21,7 @@ namespace Employment_Services_System
         }
     
         public int id { get; set; }
-        public string job_type1 { get; set; }
+        public string job_type_name { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<job_post> job_post { get; set; }

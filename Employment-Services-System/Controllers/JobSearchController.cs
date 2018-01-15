@@ -29,7 +29,7 @@ namespace Employment_Services_System.Controllers
             var JobPosts = from j in db.job_post
                            .Where(job_post =>
                                (
-                                   job_post.job_type.job_type1.Contains(keyword) ||
+                                   job_post.job_type.job_type_name.Contains(keyword) ||
                                    job_post.company.company_name.Contains(keyword) ||
                                    job_post.job_description.Contains(keyword)
                                )
@@ -43,7 +43,7 @@ namespace Employment_Services_System.Controllers
                            select new JobPostDTO()
                            {
                                Id = j.id,
-                               JobType = j.job_type.job_type1,
+                               JobType = j.job_type.job_type_name,
                                Company = j.company.company_name,
                                JobDescription = j.job_description,
                                JobLocationStreet = j.job_location.street_address,
@@ -68,7 +68,7 @@ namespace Employment_Services_System.Controllers
             var JobPosts = from j in db.job_post
                            .Where(job_post =>
                                (
-                                   job_post.job_type.job_type1.Contains(keyword) ||
+                                   job_post.job_type.job_type_name.Contains(keyword) ||
                                    job_post.company.company_name.Contains(keyword) ||
                                    job_post.job_description.Contains(keyword)
                                )
@@ -80,7 +80,7 @@ namespace Employment_Services_System.Controllers
                                )
                                &&
                                (
-                                    category != "" ? job_post.job_type.job_type1 == category : true
+                                    category != "" ? job_post.job_type.job_type_name == category : true
                                )
                                &&
                                (
@@ -109,7 +109,7 @@ namespace Employment_Services_System.Controllers
                            select new JobPostDTO()
                            {
                                Id = j.id,
-                               JobType = j.job_type.job_type1,
+                               JobType = j.job_type.job_type_name,
                                Company = j.company.company_name,
                                JobDescription = j.job_description,
                                JobLocationStreet = j.job_location.street_address,

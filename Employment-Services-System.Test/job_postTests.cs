@@ -56,7 +56,7 @@ namespace Employment_Services_System.Tests
                 job_type = new job_type()
                 {
                     id = 1,
-                    job_type1 = "loljob",
+                    job_type_name = "loljob",
                 },
                 posted_by_id = 1,
                 job_location_id = 1,
@@ -67,7 +67,7 @@ namespace Employment_Services_System.Tests
             {
                 id = 1,
                 company_id = 1,
-                company_image1 = new byte[256],
+                company_image_image = new byte[256],
                 company = _job_post.company
             };
             _job_post.job_post_activity.Add(new job_post_activity()

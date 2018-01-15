@@ -25,7 +25,7 @@ namespace Employment_Services_System.Controllers
                            select new JobPostDTO()
                            {
                                Id = j.id,
-                               JobType = j.job_type.job_type1,
+                               JobType = j.job_type.job_type_name,
                                Company = j.company.company_name,
                                JobDescription = j.job_description,
                                JobLocationStreet = j.job_location.street_address,
@@ -42,7 +42,7 @@ namespace Employment_Services_System.Controllers
                 {
                     Id = j.id,
                     PostedBy = j.user_account.email,
-                    JobType = j.job_type.job_type1,
+                    JobType = j.job_type.job_type_name,
                     Company = j.company.company_name,
                     IsCompanyNameHidden = j.is_company_name_hidden,
                     CreatedDate = j.created_date,

@@ -17,11 +17,11 @@ namespace Employment_Services_System
     
     public partial class EmploymentDataContext : DbContext
     {
-        public EmploymentDataContext(string connectionStringName = "EmploymentDataContext")
-            : base(connectionStringName)
+        public EmploymentDataContext()
+            : base("name=EmploymentDataContext")
         {
         }
-
+    
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             throw new UnintentionalCodeFirstException();

@@ -16,7 +16,7 @@ namespace Employment_Services_System
     {
         public int id { get; set; }
         public int company_id { get; set; }
-        public byte[] company_image1 { get; set; }
+        public byte[] company_image_image { get; set; }
     
         public virtual company company { get; set; }
     }
