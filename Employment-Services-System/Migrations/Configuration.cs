@@ -5,14 +5,14 @@ namespace Employment_Services_System.Migrations
     using System.Data.Entity.Migrations;
     using System.Linq;
     
-    internal sealed class Configuration : DbMigrationsConfiguration<Employment_Services_System.EmploymentDataContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<Employment_Services_System.Models.EmploymentServicesDatabaseContext>
     {
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
         }
 
-        protected override void Seed(Employment_Services_System.EmploymentDataContext context)
+        protected override void Seed(Employment_Services_System.Models.EmploymentServicesDatabaseContext context)
         {
             //  This method will be called after migrating to the latest version.
 

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Employment_Services_System;
+using Employment_Services_System.Models;
 using Xunit;
 
 namespace Employment_Services_System.Test

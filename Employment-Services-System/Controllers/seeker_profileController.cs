@@ -15,7 +15,7 @@ namespace Employment_Services_System.Controllers
 {
     public class seeker_profileController : ApiController
     {
-        private EmploymentDataContext db = new EmploymentDataContext();
+        private EmploymentServicesDatabaseContext db = new EmploymentServicesDatabaseContext();
 
         // GET: api/seeker_profile
         public IQueryable<SeekerDTO> Getseeker_profile()

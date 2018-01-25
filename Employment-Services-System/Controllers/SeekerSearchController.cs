@@ -17,7 +17,7 @@ namespace Employment_Services_System.Controllers
 {
     public class SeekerSearchController : ApiController
     {
-        private EmploymentDataContext db = new EmploymentDataContext();
+        private EmploymentServicesDatabaseContext db = new EmploymentServicesDatabaseContext();
 
         [System.Web.Http.AcceptVerbs("GET")]
         [System.Web.Http.HttpGet]

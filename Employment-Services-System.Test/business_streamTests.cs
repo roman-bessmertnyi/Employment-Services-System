@@ -1,5 +1,5 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Employment_Services_System;
+using Employment_Services_System.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -33,10 +33,10 @@ namespace Employment_Services_System.Tests
                 
             };
 
-            bs1.company.Add(_company);
+            bs1.companies.Add(_company);
 
             Xunit.Assert.NotNull(bs1);
-            Xunit.Assert.NotNull(bs1.company);
+            Xunit.Assert.NotNull(bs1.companies);
 
         }
     }

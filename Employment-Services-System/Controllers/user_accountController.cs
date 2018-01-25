@@ -16,7 +16,7 @@ namespace Employment_Services_System.Controllers
 {
     public class user_accountController : ApiController
     {
-        private EmploymentDataContext db = new EmploymentDataContext();
+        private EmploymentServicesDatabaseContext db = new EmploymentServicesDatabaseContext();
 
         // GET: api/user_account
         public IQueryable<UserAccountDTO> Getuser_account()

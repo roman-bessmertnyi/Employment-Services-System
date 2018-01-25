@@ -149,7 +149,11 @@
       <Private>True</Private>
     </Reference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201801221402358_initial.resx">
+      <DependentUpon>201801221402358_initial.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
@@ -183,15 +187,6 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\SampleDirection.cs" />
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
-    <Compile Include="business_stream.cs">
-      <DependentUpon>Employment-Services-Model.tt</DependentUpon>
-    </Compile>
-    <Compile Include="company.cs">
-      <DependentUpon>Employment-Services-Model.tt</DependentUpon>
-    </Compile>
-    <Compile Include="company_image.cs">
-      <DependentUpon>Employment-Services-Model.tt</DependentUpon>
-    </Compile>
     <Compile Include="Controllers\business_streamController.cs" />
     <Compile Include="Controllers\companiesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -200,103 +195,70 @@
     <Compile Include="Controllers\SeekerSearchController.cs" />
     <Compile Include="Controllers\seeker_profileController.cs" />
     <Compile Include="Controllers\user_accountController.cs" />
-    <Compile Include="education_detail.cs">
-      <DependentUpon>Employment-Services-Model.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Employment-Services-Model.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Employment-Services-Model.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Employment-Services-Model.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Employment-Services-Model.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Employment-Services-Model.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Employment-Services-Model.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="experience_detail.cs">
-      <DependentUpon>Employment-Services-Model.tt</DependentUpon>
-    </Compile>
+    <Compile Include="EntityFramework\EmploymentServicesDbInitializer.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="job_location.cs">
-      <DependentUpon>Employment-Services-Model.tt</DependentUpon>
-    </Compile>
-    <Compile Include="job_post.cs">
-      <DependentUpon>Employment-Services-Model.tt</DependentUpon>
-    </Compile>
-    <Compile Include="job_post_activity.cs">
-      <DependentUpon>Employment-Services-Model.tt</DependentUpon>
-    </Compile>
-    <Compile Include="job_post_skill_set.cs">
-      <DependentUpon>Employment-Services-Model.tt</DependentUpon>
-    </Compile>
-    <Compile Include="job_type.cs">
-      <DependentUpon>Employment-Services-Model.tt</DependentUpon>
+    <Compile Include="Migrations\201801221402358_initial.cs" />
+    <Compile Include="Migrations\201801221402358_initial.Designer.cs">
+      <DependentUpon>201801221402358_initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="Models\JobPostDetailsDTO.cs" />
-    <Compile Include="Models\JobPostDTO.cs" />
-    <Compile Include="Models\SeekerDetailsDTO.cs" />
-    <Compile Include="Models\SeekerDTO.cs" />
-    <Compile Include="Models\UserAccountDetailsDTO.cs" />
-    <Compile Include="Models\UserAccountDTO.cs" />
+    <Compile Include="Models\business_stream.cs" />
+    <Compile Include="Models\company.cs" />
+    <Compile Include="Models\company_image.cs" />
+    <Compile Include="Models\education_detail.cs" />
+    <Compile Include="Models\EmploymentServicesDatabaseContext.cs" />
+    <Compile Include="Models\experience_detail.cs" />
+    <Compile Include="Models\DTO\JobPostDetailsDTO.cs" />
+    <Compile Include="Models\DTO\JobPostDTO.cs" />
+    <Compile Include="Models\job_location.cs" />
+    <Compile Include="Models\job_post.cs" />
+    <Compile Include="Models\job_post_activity.cs" />
+    <Compile Include="Models\job_post_skill_set.cs" />
+    <Compile Include="Models\job_type.cs" />
+    <Compile Include="Models\Mapping\business_streamMap.cs" />
+    <Compile Include="Models\Mapping\companyMap.cs" />
+    <Compile Include="Models\Mapping\company_imageMap.cs" />
+    <Compile Include="Models\Mapping\education_detailMap.cs" />
+    <Compile Include="Models\Mapping\experience_detailMap.cs" />
+    <Compile Include="Models\Mapping\job_locationMap.cs" />
+    <Compile Include="Models\Mapping\job_postMap.cs" />
+    <Compile Include="Models\Mapping\job_post_activityMap.cs" />
+    <Compile Include="Models\Mapping\job_post_skill_setMap.cs" />
+    <Compile Include="Models\Mapping\job_typeMap.cs" />
+    <Compile Include="Models\Mapping\seeker_profileMap.cs" />
+    <Compile Include="Models\Mapping\seeker_skill_setMap.cs" />
+    <Compile Include="Models\Mapping\skill_setMap.cs" />
+    <Compile Include="Models\Mapping\sysdiagramMap.cs" />
+    <Compile Include="Models\Mapping\user_accountMap.cs" />
+    <Compile Include="Models\Mapping\user_logMap.cs" />
+    <Compile Include="Models\Mapping\user_typeMap.cs" />
+    <Compile Include="Models\Mapping\View_1Map.cs" />
+    <Compile Include="Models\Mapping\View_SeekersMap.cs" />
+    <Compile Include="Models\DTO\SeekerDetailsDTO.cs" />
+    <Compile Include="Models\DTO\SeekerDTO.cs" />
+    <Compile Include="Models\seeker_profile.cs" />
+    <Compile Include="Models\seeker_skill_set.cs" />
+    <Compile Include="Models\skill_set.cs" />
+    <Compile Include="Models\sysdiagram.cs" />
+    <Compile Include="Models\DTO\UserAccountDetailsDTO.cs" />
+    <Compile Include="Models\DTO\UserAccountDTO.cs" />
+    <Compile Include="Models\user_account.cs" />
+    <Compile Include="Models\user_log.cs" />
+    <Compile Include="Models\user_type.cs" />
+    <Compile Include="Models\View_1.cs" />
+    <Compile Include="Models\View_Seekers.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="seeker_profile.cs">
-      <DependentUpon>Employment-Services-Model.tt</DependentUpon>
-    </Compile>
-    <Compile Include="seeker_skill_set.cs">
-      <DependentUpon>Employment-Services-Model.tt</DependentUpon>
-    </Compile>
-    <Compile Include="skill_set.cs">
-      <DependentUpon>Employment-Services-Model.tt</DependentUpon>
-    </Compile>
-    <Compile Include="sp_helpdiagramdefinition_Result.cs">
-      <DependentUpon>Employment-Services-Model.tt</DependentUpon>
-    </Compile>
-    <Compile Include="sp_helpdiagrams_Result.cs">
-      <DependentUpon>Employment-Services-Model.tt</DependentUpon>
-    </Compile>
-    <Compile Include="sysdiagrams.cs">
-      <DependentUpon>Employment-Services-Model.tt</DependentUpon>
-    </Compile>
-    <Compile Include="user_account.cs">
-      <DependentUpon>Employment-Services-Model.tt</DependentUpon>
-    </Compile>
-    <Compile Include="user_log.cs">
-      <DependentUpon>Employment-Services-Model.tt</DependentUpon>
-    </Compile>
-    <Compile Include="user_type.cs">
-      <DependentUpon>Employment-Services-Model.tt</DependentUpon>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Data\TestData.mdf" />
-    <Content Include="App_Data\TestData_log.ldf">
-      <DependentUpon>TestData.mdf</DependentUpon>
-    </Content>
     <Content Include="Areas\HelpPage\HelpPage.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\gerb.gif" />
     <Content Include="Content\title.gif" />
     <Content Include="Content\title2.gif" />
-    <Content Include="Employment-Services-Model.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Employment-Services-Model.edmx</DependentUpon>
-      <LastGenOutput>Employment-Services-Model.Context.cs</LastGenOutput>
-    </Content>
     <Content Include="Employment-Services-Model.edmx.sql" />
-    <Content Include="Employment-Services-Model.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Employment-Services-Model.edmx</DependentUpon>
-      <LastGenOutput>Employment-Services-Model.cs</LastGenOutput>
-    </Content>
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -322,13 +284,6 @@
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\CollectionModelDescription.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\ApiGroup.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\Api.cshtml" />
-    <EntityDeploy Include="Employment-Services-Model.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Employment-Services-Model.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Employment-Services-Model.edmx.diagram">
-      <DependentUpon>Employment-Services-Model.edmx</DependentUpon>
-    </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />

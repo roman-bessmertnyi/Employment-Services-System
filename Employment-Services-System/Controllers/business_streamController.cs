@@ -10,12 +10,13 @@ using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Description;
 using Employment_Services_System;
+using Employment_Services_System.Models;
 
 namespace Employment_Services_System.Controllers
 {
     public class business_streamController : ApiController
     {
-        private EmploymentDataContext db = new EmploymentDataContext();
+        private EmploymentServicesDatabaseContext db = new EmploymentServicesDatabaseContext();
 
         // GET: api/business_stream
         public IQueryable<business_stream> Getbusiness_stream()

@@ -16,7 +16,7 @@ namespace Employment_Services_System.Controllers
 {
     public class job_postController : ApiController
     {
-        private EmploymentDataContext db = new EmploymentDataContext();
+        private EmploymentServicesDatabaseContext db = new EmploymentServicesDatabaseContext();
 
         // GET: api/job_post
         public IQueryable<JobPostDTO> Getjob_post()

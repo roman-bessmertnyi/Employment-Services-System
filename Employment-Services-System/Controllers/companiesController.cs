@@ -9,25 +9,25 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Description;
-using Employment_Services_System;
+using Employment_Services_System.Models;
 
 namespace Employment_Services_System.Controllers
 {
     public class companiesController : ApiController
     {
-        private EmploymentDataContext db = new EmploymentDataContext();
+        private EmploymentServicesDatabaseContext db = new EmploymentServicesDatabaseContext();
 
         // GET: api/companies
         public IQueryable<company> Getcompany()
         {
-            return db.company;
+            return db.companies;
         }
 
         // GET: api/companies/5
         [ResponseType(typeof(company))]
         public async Task<IHttpActionResult> Getcompany(int id)
         {
-            company company = await db.company.FindAsync(id);
+            company company = await db.companies.FindAsync(id);
             if (company == null)
             {
                 return NotFound();
@@ -80,7 +80,7 @@ namespace Employment_Services_System.Controllers
                 return BadRequest(ModelState);
             }
 
-            db.company.Add(company);
+            db.companies.Add(company);
 
             try
             {
@@ -105,13 +105,13 @@ namespace Employment_Services_System.Controllers
         [ResponseType(typeof(company))]
         public async Task<IHttpActionResult> Deletecompany(int id)
         {
-            company company = await db.company.FindAsync(id);
+            company company = await db.companies.FindAsync(id);
             if (company == null)
             {
                 return NotFound();
             }
 
-            db.company.Remove(company);
+            db.companies.Remove(company);
             await db.SaveChangesAsync();
 
             return Ok(company);
@@ -128,7 +128,7 @@ namespace Employment_Services_System.Controllers
 
         private bool companyExists(int id)
         {
-            return db.company.Count(e => e.id == id) > 0;
+            return db.companies.Count(e => e.id == id) > 0;
         }
     }
 }

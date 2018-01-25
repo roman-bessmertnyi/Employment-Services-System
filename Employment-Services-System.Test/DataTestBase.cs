@@ -2,7 +2,7 @@
 using System.Text;
 using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Employment_Services_System;
+using Employment_Services_System.Models;
 using System.Data.Entity;
 
 namespace Employment_Services_System.Tests
@@ -12,18 +12,18 @@ namespace Employment_Services_System.Tests
     /// </summary>
     public class DataTestBase : IDisposable
     {
-        public EmploymentDataContext employmentDataContext;
+        public EmploymentServicesDatabaseContext employmentDataContext;
 
         public DataTestBase()
         {
-            employmentDataContext = new EmploymentDataContext("TestConnection");
+            employmentDataContext = new EmploymentServicesDatabaseContext();
             CleanDatabase();
         }
 
         public void CleanDatabase()
         {
             employmentDataContext.business_stream.RemoveRange(employmentDataContext.business_stream);
-            employmentDataContext.company.RemoveRange(employmentDataContext.company);
+            employmentDataContext.companies.RemoveRange(employmentDataContext.companies);
             employmentDataContext.company_image.RemoveRange(employmentDataContext.company_image);
             employmentDataContext.education_detail.RemoveRange(employmentDataContext.education_detail);
             employmentDataContext.experience_detail.RemoveRange(employmentDataContext.experience_detail);
